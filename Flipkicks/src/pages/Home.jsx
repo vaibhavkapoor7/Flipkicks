@@ -1,6 +1,6 @@
-﻿import Navbar from '../components/Navbar'
+﻿import Navbar from '../components/Navbar/Navbar'
 
-import Hero from '../components/Home/Hero'
+import Hero from '../components/home/Hero/Hero'
 
 import ProductsGrid from '../components/Home/ProductsGrid'
 
