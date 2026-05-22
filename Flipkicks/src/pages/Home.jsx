@@ -4,7 +4,7 @@ import Hero from '../components/Home/Hero'
 
 import ProductsGrid from '../components/Home/ProductsGrid'
 
-import '../pages css/home.css'
+import '../pages-css/home.css'
 
 function Home() {
 

@@ -10,7 +10,7 @@ import {
 import logo from "../assets/images/logo.png";
 import profile from "../assets/images/profile.png";
 
-import "../components css/navbar.css";
+import "./Navbar.css";
 
 function Navbar() {
 
