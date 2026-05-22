@@ -121,7 +121,7 @@ body{
 
 .logo img{
     width: auto;
-    max-width: 260px;
+    min-width: 280px;
     object-fit: contain; 
 }
 
@@ -131,17 +131,16 @@ body{
     display: flex;
     align-items: center;
     gap: 32px;
-
+    padding-left: 20px;
+    padding-right: 20px;
     list-style: none;
 }
 
 .nav-links li a{
     text-decoration: none;
     color: white;
-
-    font-size: 15px;
-    font-weight: 500;
-
+    font-size: 12px;
+    font-weight: 400;
     position: relative;
 
     transition: 0.3s;
