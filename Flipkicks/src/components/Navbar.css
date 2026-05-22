@@ -107,7 +107,6 @@ body{
 .nav-left{
     display: flex;
     align-items: center;
-    gap: 40px;
 }
 
 /* logo */
@@ -115,14 +114,15 @@ body{
 .logo{
     width: 220px;
     display: flex;
-    padding-top: 30px;
+    padding-top: 10px;
+
     
 }
 
 .logo img{
     width: auto;
     min-width: 280px;
-    object-fit: contain; 
+    margin-left: -30px; 
 }
 
 /* links */
@@ -139,7 +139,7 @@ body{
 .nav-links li a{
     text-decoration: none;
     color: white;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     position: relative;
 
@@ -264,8 +264,8 @@ body{
 }
 
 .profile img{
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 135%;
 
     object-fit: cover;
 }
