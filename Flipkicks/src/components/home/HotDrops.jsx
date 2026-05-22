@@ -1,4 +1,3 @@
-import React from 'react'
 import DropCard from './DropCard'
 
 const HotDrops = ({ drops = [] }) => {
