@@ -2,7 +2,8 @@
 
 import Hero from '../components/home/Hero/Hero'
 
-import ProductsGrid from '../components/Home/ProductsGrid'
+import ProductsGrid from '../components/home/ProductsGrid'
+import Productcard from '../components/home/Productcard/ProductCard'
 
 import '../pages-css/home.css'
 
