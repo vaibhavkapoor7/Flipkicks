@@ -1,5 +1,164 @@
-/* Product page styles */
+/* =========================
+   PRODUCT PAGE
+========================= */
 
-.product-page {
-  /* Add product page layout styles here */
+.product-page{
+    width: 100%;
+
+    max-width: 1440px;
+
+    margin: 50px auto;
+
+    padding: 0 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 50px;
+}
+
+/* left */
+
+.product-left{
+    padding: 40px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,23,42,0.86),
+            rgba(15,23,42,0.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+}
+
+.product-left img{
+    width: 100%;
+
+    height: 500px;
+
+    object-fit: contain;
+}
+
+/* right */
+
+.product-right{
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.product-right span{
+    color: #3b82f6;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    margin-bottom: 16px;
+}
+
+.product-right h1{
+    color: white;
+
+    font-size: 54px;
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+.product-right h2{
+    color: white;
+
+    font-size: 42px;
+    font-weight: 700;
+
+    margin-bottom: 24px;
+}
+
+.product-right p{
+    color: #94a3b8;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 40px;
+}
+
+/* buttons */
+
+.product-buttons{
+    display: flex;
+
+    gap: 18px;
+}
+
+.product-buttons button{
+    height: 58px;
+
+    padding: 0 34px;
+
+    border-radius: 16px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.product-buttons button:hover{
+    transform: translateY(-3px);
+}
+
+.wishlist-btn{
+    background:
+        rgba(15,23,42,0.82)
+        !important;
+
+    border:
+        1px solid rgba(255,255,255,0.06)
+        !important;
+}
+
+/* responsive */
+
+@media(max-width: 992px){
+
+    .product-page{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 768px){
+
+    .product-page{
+        padding: 0 20px;
+    }
+
+    .product-right h1{
+        font-size: 42px;
+    }
+
+    .product-left img{
+        height: 320px;
+    }
 }

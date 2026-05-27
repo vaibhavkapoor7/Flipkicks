@@ -1,4 +1,8 @@
-import { Link } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useNavigate
+} from "react-router-dom";
 
 import {
   Search,
@@ -7,6 +11,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+import { useState } from "react";
+
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.png";
 
@@ -14,10 +20,33 @@ import "./Navbar.css";
 
 function Navbar() {
 
+  const navigate =
+  useNavigate();
+
+  const [searchValue,
+  setSearchValue] =
+  useState("");
+
+  /* search */
+
+  function handleSearch(e){
+
+    e.preventDefault();
+
+    if(searchValue.trim() !== ""){
+
+      navigate(
+
+        `/browse?search=${searchValue}`
+
+      );
+    }
+  }
+
   return (
 
     <>
-    
+
       {/* topbar */}
 
       <div className="topbar">
@@ -30,12 +59,20 @@ function Navbar() {
 
           <div className="topbar-right">
 
-            <span>Download App</span>
+            <span>
+              Download App
+            </span>
 
-            <span>Help</span>
+            <span>
+              Help
+            </span>
 
             <div className="currency">
-              USD <ChevronDown size={15} />
+
+              USD
+
+              <ChevronDown size={15} />
+
             </div>
 
           </div>
@@ -56,9 +93,15 @@ function Navbar() {
 
             {/* logo */}
 
-            <Link to="/" className="logo">
+            <Link
+              to="/"
+              className="logo"
+            >
 
-              <img src={logo} alt="logo" />
+              <img
+                src={logo}
+                alt="logo"
+              />
 
             </Link>
 
@@ -67,33 +110,88 @@ function Navbar() {
             <ul className="nav-links">
 
               <li>
-                <Link to="/" className="active">
+
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active"
+                      : ""
+                  }
+                >
+
                   Home
-                </Link>
+
+                </NavLink>
+
               </li>
 
               <li>
-                <Link to="/browse">
+
+                <NavLink
+                  to="/browse"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active"
+                      : ""
+                  }
+                >
+
                   Browse
-                </Link>
+
+                </NavLink>
+
               </li>
 
               <li>
-                <Link to="/sell">
+
+                <NavLink
+                  to="/sell"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active"
+                      : ""
+                  }
+                >
+
                   Sell
-                </Link>
+
+                </NavLink>
+
               </li>
 
               <li>
-                <Link to="/how-it-works">
+
+                <NavLink
+                  to="/how-it-works"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active"
+                      : ""
+                  }
+                >
+
                   How It Works
-                </Link>
+
+                </NavLink>
+
               </li>
 
               <li>
-                <Link to="/about">
+
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "active"
+                      : ""
+                  }
+                >
+
                   About
-                </Link>
+
+                </NavLink>
+
               </li>
 
             </ul>
@@ -106,16 +204,33 @@ function Navbar() {
 
             {/* search */}
 
-            <div className="search-box">
+            <form
+
+              className="search-box"
+
+              onSubmit={handleSearch}
+
+            >
 
               <Search size={20} />
 
               <input
+
                 type="text"
+
                 placeholder="Search sneakers, brands, etc."
+
+                value={searchValue}
+
+                onChange={(e) =>
+                  setSearchValue(
+                    e.target.value
+                  )
+                }
+
               />
 
-            </div>
+            </form>
 
             {/* icons */}
 
@@ -131,7 +246,10 @@ function Navbar() {
 
             <div className="profile">
 
-              <img src={profile} alt="profile" />
+              <img
+                src={profile}
+                alt="profile"
+              />
 
             </div>
 

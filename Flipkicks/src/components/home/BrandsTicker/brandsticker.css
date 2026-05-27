@@ -1,0 +1,73 @@
+/* section */
+
+.brands-ticker{
+    width: 100%;
+
+    padding: 30px 0;
+
+    overflow: hidden;
+}
+
+/* ticker */
+
+.ticker{
+    width: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+/* track */
+
+.ticker-track{
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    animation: scroll 22s linear infinite;
+}
+
+/* brand */
+
+.ticker-track span{
+    font-size: 64px;
+    font-weight: 800;
+
+    color: rgba(255,255,255,0.08);
+
+    margin-right: 80px;
+
+    white-space: nowrap;
+
+    transition: 0.3s;
+}
+
+.ticker-track span:hover{
+    color: rgba(59,130,246,0.45);
+}
+
+/* animation */
+
+@keyframes scroll{
+
+    0%{
+        transform: translateX(0);
+    }
+
+    100%{
+        transform: translateX(-50%);
+    }
+}
+
+/* responsive */
+
+@media(max-width: 768px){
+
+    .ticker-track span{
+        font-size: 40px;
+
+        margin-right: 40px;
+    }
+}

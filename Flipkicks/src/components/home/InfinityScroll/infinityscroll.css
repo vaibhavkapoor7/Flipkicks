@@ -1,0 +1,110 @@
+/* =========================
+   PREMIUM PILL TICKER
+========================= */
+
+.infinity-scroll{
+    width: 100%;
+    max-width: 1440px;
+    height: 58px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+    background: transparent;
+
+    position: relative;
+}
+
+/* track */
+
+.infinity-track{
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    animation: infinityScroll 22s linear infinite;
+}
+
+/* pill */
+
+.infinity-track span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 42px;
+
+    padding: 0 28px;
+
+    margin-right: 18px;
+
+    border-radius: 999px;
+
+    background: rgba(15,23,42,0.92);
+
+    border: 1px solid rgba(59,130,246,0.22);
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.22);
+
+    transition: 0.3s ease;
+}
+
+/* hover */
+
+.infinity-track span:hover{
+    background: rgba(37,99,235,0.16);
+
+    border-color: rgba(96,165,250,0.45);
+
+    transform: translateY(-2px);
+}
+
+/* animation */
+
+@keyframes infinityScroll{
+
+    0%{
+        transform: translateX(0);
+    }
+
+    100%{
+        transform: translateX(-50%);
+    }
+}
+
+/* responsive */
+
+@media(max-width: 768px){
+
+    .infinity-scroll{
+        height: 48px;
+    }
+
+    .infinity-track span{
+        height: 36px;
+
+        padding: 0 20px;
+
+        font-size: 10px;
+
+        margin-right: 12px;
+    }
+}

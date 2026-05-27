@@ -1,6 +1,6 @@
 import { Heart, ShoppingBag, Star } from "lucide-react";
 
-import "../Productcard/ProductCard.css";
+import "./ProductCard.css";
 
 function ProductCard({ image, title, brand, price }) {
 

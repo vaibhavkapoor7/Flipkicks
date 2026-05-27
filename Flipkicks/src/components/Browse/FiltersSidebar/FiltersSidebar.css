@@ -1,0 +1,329 @@
+/* =========================
+   FILTER SIDEBAR
+========================= */
+
+.filters-sidebar{
+    position: sticky;
+
+    top: 120px;
+
+    height: fit-content;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,15,28,0.96),
+            rgba(5,10,20,0.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+}
+
+/* top */
+
+.filters-top{
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.filters-top h3{
+    color: white;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.filters-top button{
+    background: transparent;
+
+    border: none;
+
+    color: #00a3ff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+/* section */
+
+.filter-section{
+    padding-bottom: 24px;
+
+    margin-bottom: 24px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.05);
+}
+
+/* title */
+
+.section-title{
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.section-title svg{
+    color: #94a3b8;
+}
+
+.filter-section h4{
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+/* search */
+
+.filter-search{
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(2,6,23,0.88);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+}
+
+.filter-search svg{
+    color: #64748b;
+}
+
+.filter-search input{
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.filter-search input::placeholder{
+    color: #64748b;
+}
+
+/* checkbox */
+
+.checkbox-list{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.checkbox-list label{
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    cursor: pointer;
+}
+
+.left-check{
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.checkbox-list input{
+    width: 16px;
+    height: 16px;
+
+    accent-color: #00a3ff;
+}
+
+.checkbox-list span{
+    color: #cbd5e1;
+
+    font-size: 14px;
+}
+
+.checkbox-list p{
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+/* show more */
+
+.show-more{
+    margin-top: 18px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #00a3ff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+/* sizes */
+
+.sizes-grid{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.sizes-grid button{
+    height: 38px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(2,6,23,0.82);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    color: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.sizes-grid button:hover{
+    background: #0ea5e9;
+}
+
+/* range */
+
+input[type="range"]{
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    accent-color: #0ea5e9;
+}
+
+/* price */
+
+.price-boxes{
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.price-box{
+    flex: 1;
+
+    height: 44px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(2,6,23,0.82);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.price-boxes span{
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+/* brands */
+
+.brand-list{
+    margin-top: 18px;
+}
+
+/* button */
+
+.apply-btn{
+    width: 100%;
+    height: 52px;
+
+    border-radius: 14px;
+
+    border: none;
+
+    background: #0ea5e9;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.apply-btn:hover{
+    background: #0284c7;
+}
+
+/* responsive */
+
+@media(max-width: 1100px){
+
+    .filters-sidebar{
+        position: relative;
+
+        top: 0;
+    }
+}

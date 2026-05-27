@@ -6,6 +6,7 @@ import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Wishlist from './pages/Wishlist'
 import About from './pages/About'
+import Browse from './pages/Browse'
 
 function App() {
 
@@ -19,12 +20,12 @@ function App() {
             />
 
             <Route
-                path="/shop"
-                element={<Shop />}
+                path="/browse"
+                element={<Browse />}
             />
 
             <Route
-                path="/product"
+                path="/product/:id"
                 element={<Product />}
             />
 
