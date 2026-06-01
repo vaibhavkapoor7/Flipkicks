@@ -1,139 +1,15 @@
 /* =========================
-   PRODUCTS SECTION
-========================= */
-
-.browse-products-section{
-    width: 100%;
-}
-
-/* =========================
-   TOPBAR
-========================= */
-
-.browse-grid-topbar{
-    width: 100%;
-
-    margin-bottom: 28px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-/* results */
-
-.results-text{
-    color: #94a3b8;
-
-    font-size: 15px;
-}
-
-.results-text span{
-    color: white;
-
-    margin: 0 6px;
-
-    font-weight: 700;
-}
-
-/* actions */
-
-.grid-actions{
-    display: flex;
-
-    align-items: center;
-
-    gap: 16px;
-}
-
-/* select */
-
-.grid-actions select{
-    height: 48px;
-
-    padding: 0 18px;
-
-    border-radius: 14px;
-
-    border:
-        1px solid rgba(255,255,255,0.06);
-
-    background:
-        rgba(15,23,42,0.82);
-
-    color: white;
-
-    outline: none;
-
-    cursor: pointer;
-}
-
-/* view toggle */
-
-.view-toggle{
-    display: flex;
-
-    gap: 10px;
-}
-
-.view-toggle button{
-    width: 48px;
-    height: 48px;
-
-    border-radius: 14px;
-
-    border:
-        1px solid rgba(255,255,255,0.06);
-
-    background:
-        rgba(15,23,42,0.82);
-
-    color: #94a3b8;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-/* active */
-
-.active-view{
-    background: #2563eb !important;
-
-    color: white !important;
-}
-
-/* hover */
-
-.view-toggle button:hover{
-    background: #2563eb;
-
-    color: white;
-}
-
-/* =========================
    GRID VIEW
 ========================= */
 
 .browse-products-grid{
-    width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(3, 1fr);
 
-    gap: 24px;
+    gap: 30px;
 }
 
 /* =========================
@@ -141,7 +17,6 @@
 ========================= */
 
 .browse-products-list{
-    width: 100%;
 
     display: flex;
 
@@ -150,91 +25,24 @@
     gap: 20px;
 }
 
-/* list card */
-
-.browse-products-list
-.browse-product-card{
-    display: flex;
-
-    align-items: center;
-
-    gap: 24px;
-
-    height: 240px;
-}
-
-/* image */
-
-.browse-products-list
-.browse-product-image{
-    width: 300px;
-
-    min-width: 300px;
-
-    height: 100%;
-
-    margin-bottom: 0;
-}
-
-/* content */
-
-.browse-products-list
-.browse-product-content{
-    flex: 1;
-}
-
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media(max-width: 1400px){
+@media(max-width: 1200px){
 
     .browse-products-grid{
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-}
 
-@media(max-width: 992px){
-
-    .browse-products-grid{
         grid-template-columns:
             repeat(2, 1fr);
-    }
-
-    .browse-products-list
-    .browse-product-card{
-        flex-direction: column;
-
-        height: auto;
-    }
-
-    .browse-products-list
-    .browse-product-image{
-        width: 100%;
-
-        min-width: 100%;
     }
 }
 
 @media(max-width: 768px){
 
-    .browse-grid-topbar{
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .grid-actions{
-        width: 100%;
-
-        justify-content: space-between;
-    }
-}
-
-@media(max-width: 600px){
-
     .browse-products-grid{
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 }

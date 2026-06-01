@@ -1,25 +1,63 @@
-import { Heart, ShoppingBag, Star } from "lucide-react";
+import { Heart, ShoppingBag, Star }
+from "lucide-react";
+
+import { Link }
+from "react-router-dom";
 
 import "./ProductCard.css";
 
-function ProductCard({ image, title, brand, price }) {
+function ProductCard({
+
+  id,
+
+  image,
+
+  title,
+
+  brand,
+
+  price,
+
+  rating = 4.9,
+
+  variant = "home"
+
+}) {
 
   return (
 
-    <div className="product-card">
+    <Link
 
-      {/* top */}
+      to={`/product/${id}`}
 
-      <div className="product-top">
+      className={`product-card ${variant}`}
 
-        <button className="wishlist-btn">
+    >
+
+      {/* image */}
+
+      <div className="card-top">
+
+        <button
+
+          className="card-wishlist"
+
+          onClick={(e) => {
+
+            e.preventDefault();
+
+          }}
+
+        >
 
           <Heart size={18} />
 
         </button>
 
         <img
+
           src={image}
+
           alt={title}
 
           onError={(e) => {
@@ -28,45 +66,66 @@ function ProductCard({ image, title, brand, price }) {
               "https://via.placeholder.com/300x200";
 
           }}
+
         />
 
       </div>
 
-      {/* info */}
+      {/* content */}
 
-      <div className="product-info">
-        <div className="product-name">
-        <span className="product-brand">
+      <div className="card-content">
+
+        <span className="card-brand">
+
           {brand}
+
         </span>
 
         <h3>
+
           {title}
+
         </h3>
-        </div>
 
-        {/* rating */}
-
-        <div className="product-rating">
+        <div className="card-rating">
 
           <Star
-            size={16}
-            fill="currentColor"
+
+            size={15}
+
+            fill="#facc15"
+
+            color="#facc15"
+
           />
 
-          <span>4.9</span>
+          <span>
+
+            {rating}
+
+          </span>
 
         </div>
 
-        {/* bottom */}
-
-        <div className="product-bottom">
+        <div className="card-bottom">
 
           <h2>
+
             ${price}
+
           </h2>
 
-          <button className="cart-btn">
+          <button
+
+            className="card-cart"
+
+            onClick={(e) => {
+
+              e.preventDefault();
+
+            }}
+
+          >
 
             <ShoppingBag size={18} />
 
@@ -76,7 +135,8 @@ function ProductCard({ image, title, brand, price }) {
 
       </div>
 
-    </div>
+    </Link>
+
   );
 }
 

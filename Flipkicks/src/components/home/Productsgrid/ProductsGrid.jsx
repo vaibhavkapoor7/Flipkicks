@@ -1,62 +1,75 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState }
+from "react";
 
-import ProductCard from "../Productcard/ProductCard";
+import ProductCard
+from "../ProductCard/ProductCard";
 
 import "./ProductsGrid.css";
 
 function ProductsGrid() {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] =
+  useState([]);
 
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter,
+  setActiveFilter] =
+  useState("All");
 
   /* fetch products */
 
   useEffect(() => {
 
     const urls = [
+
       "https://dummyjson.com/products/category/mens-shoes",
+
       "https://dummyjson.com/products/category/womens-shoes"
+
     ];
 
     Promise.all(
 
       urls.map(url =>
-        fetch(url).then(res => res.json())
+        fetch(url)
+          .then(res => res.json())
       )
 
     )
 
-      .then((data) => {
+    .then((data) => {
 
-        const allProducts = data.flatMap(
-          item => item.products
-        );
+      const allProducts =
+      data.flatMap(
+        item => item.products
+      );
 
-        console.log(allProducts);
+      setProducts(allProducts);
 
-        setProducts(allProducts);
+    })
 
-      })
+    .catch((error) => {
 
-      .catch((error) => {
+      console.log(error);
 
-        console.log(error);
-
-      });
+    });
 
   }, []);
 
   /* filters */
 
   const filters = [
+
     "All",
+
     "Nike",
+
     "Puma",
+
     "Off White"
+
   ];
 
-  /* filtered products */
+  /* filtered */
 
   const filteredProducts =
 
@@ -65,8 +78,12 @@ function ProductsGrid() {
       ? products
 
       : products.filter(
-          (product) =>
-            product.brand === activeFilter
+
+          product =>
+
+            product.brand ===
+            activeFilter
+
         );
 
   return (
@@ -82,11 +99,15 @@ function ProductsGrid() {
           <div>
 
             <span className="grid-tag">
+
               Explore Collection
+
             </span>
 
             <h2>
+
               Trending Sneakers
+
             </h2>
 
           </div>
@@ -97,20 +118,26 @@ function ProductsGrid() {
 
         <div className="filter-buttons">
 
-          {filters.map((filter, index) => (
+          {filters.map((filter) => (
 
             <button
-              key={index}
+
+              key={filter}
 
               className={
+
                 activeFilter === filter
-                  ? "filter-btn active-filter"
-                  : "filter-btn"
+
+                ? "filter-btn active-filter"
+
+                : "filter-btn"
+
               }
 
               onClick={() =>
                 setActiveFilter(filter)
               }
+
             >
 
               {filter}
@@ -126,11 +153,16 @@ function ProductsGrid() {
         <div className="products-wrapper">
 
           {filteredProducts
+
             .slice(0, 20)
+
             .map((product) => (
 
               <ProductCard
+
                 key={product.id}
+
+                id={product.id}
 
                 image={product.thumbnail}
 
@@ -139,6 +171,11 @@ function ProductsGrid() {
                 brand={product.brand}
 
                 price={product.price}
+
+                rating={product.rating}
+
+                variant="home"
+
               />
 
             ))}
@@ -148,6 +185,7 @@ function ProductsGrid() {
       </div>
 
     </section>
+
   );
 }
 

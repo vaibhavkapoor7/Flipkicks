@@ -119,14 +119,14 @@ function Product() {
 
       <Navbar />
 
-      <section className="product-page">
+      <section className="productpage">
 
         {/* LEFT */}
 
         <div className="product-left">
 
           {/* thumbnails */}
-
+          <div className="product-image-section">
           <div className="product-thumbnails">
 
             {product.images.map((image, index) => (
@@ -204,6 +204,7 @@ function Product() {
 
             </div>
 
+          </div>
           </div>
 
           {/* features */}

@@ -1,13 +1,13 @@
-import BrowseProductCard from
-"../BrowseProductCard/BrowseProductCard";
+import ProductCard
+from "../../home/Productcard/ProductCard";
 
 import "./BrowseProductsGrid.css";
 
-function BrowseProductGrid({
+function BrowseProductsGrid({
 
   products = [],
 
-  view
+  view = "grid"
 
 }) {
 
@@ -29,9 +29,10 @@ function BrowseProductGrid({
 
       {products.map((product) => (
 
-        <BrowseProductCard
+        <ProductCard
 
           key={product.id}
+
           id={product.id}
 
           image={product.thumbnail}
@@ -44,12 +45,15 @@ function BrowseProductGrid({
 
           rating={product.rating}
 
+          variant="browse"
+
         />
 
       ))}
 
     </section>
+
   );
 }
 
-export default BrowseProductGrid;
+export default BrowseProductsGrid;

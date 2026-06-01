@@ -163,7 +163,7 @@ function Navbar() {
               <li>
 
                 <NavLink
-                  to="/how-it-works"
+                  to="/HowItWorks"
                   className={({ isActive }) =>
                     isActive
                       ? "active"
@@ -234,13 +234,15 @@ function Navbar() {
 
             {/* icons */}
 
-            <div className="nav-icons">
+                <div className="nav-icons">
+      <Bell />
 
-              <Bell />
+      <ShoppingCart
+        className="cart-icon"
+        onClick={() => setIsCartOpen(true)}
+      />
+    </div>
 
-              <ShoppingCart />
-
-            </div>
 
             {/* profile */}
 
