@@ -21,9 +21,6 @@ import {
   DollarSign,
 } from "lucide-react";
 
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
-
 import "../pages-css/Account.css";
 
 const avatar = "https://api.dicebear.com/9.x/adventurer/svg?seed=VaibhavKapoor&backgroundColor=dbeafe&skinColor=f2d3b1&hair=short01&hairColor=2c1503&eyes=variant07&mouth=variant26";
@@ -265,9 +262,6 @@ function Account() {
   ];
 
   return (
-    <>
-      <Navbar />
-
       <section className="account-page">
 
         {/* ── Profile Header ── */}
@@ -327,8 +321,6 @@ function Account() {
 
       </section>
 
-      <Footer />
-    </>
   );
 }
 

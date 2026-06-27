@@ -8,10 +8,6 @@ import {
   BadgeCheck
 } from "lucide-react";
 
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
-
-
 import "../pages-css/HowItWorks.css";
 
 function HowItWorks() {
@@ -63,9 +59,6 @@ const navigate = useNavigate();
   ];
 
   return (
-
-    <>
-      <Navbar />
 
       <section className="how-page">
 
@@ -203,8 +196,6 @@ const navigate = useNavigate();
 
       </section>
 
-      <Footer />
-    </>
   );
 }
 

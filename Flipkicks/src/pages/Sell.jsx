@@ -12,9 +12,6 @@ import {
   Upload,
 } from "lucide-react";
 
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
-
 import "../pages-css/Sell.css";
 
 const steps = [
@@ -90,9 +87,6 @@ function Sell() {
   };
 
   return (
-    <>
-      <Navbar />
-
       <section className="sell-page">
 
         {/* ── Hero ── */}
@@ -275,8 +269,6 @@ function Sell() {
 
       </section>
 
-      <Footer />
-    </>
   );
 }
 

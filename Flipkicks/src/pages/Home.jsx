@@ -1,5 +1,4 @@
-﻿import Navbar from '../components/Navbar/Navbar'
-import InfinityScroll from '../components/home/InfinityScroll/InfinityScroll'
+﻿import InfinityScroll from '../components/home/InfinityScroll/InfinityScroll'
 
 import Hero from '../components/home/Hero/Hero'
 
@@ -10,7 +9,6 @@ import BrandsTicker from '../components/home/BrandsTicker/BrandsTicker'
 import HowItWorks from '../components/home/HowItWorks/HowItWorks'
 import Testimonials from '../components/home/Testimonials/Testimonials'
 import Community from '../components/home/Community/Community'
-import Footer from '../components/Footer/Footer'
 
 import '../pages-css/home.css'
 
@@ -20,7 +18,6 @@ function Home() {
 
         <div className="home-page">
 
-            <Navbar />
             <Hero />
             <InfinityScroll />
             <ProductsGrid />
@@ -29,8 +26,7 @@ function Home() {
             <HowItWorks />
             <Testimonials />
             <Community />
-            <Footer />
-            
+
         </div>
 
     )

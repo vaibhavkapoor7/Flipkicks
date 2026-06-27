@@ -14,12 +14,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import Navbar from
-"../components/navbar/Navbar";
-
-import Footer from
-"../components/footer/Footer";
-
 import { useCart } from "../context/CartContext";
 
 import "../pages-css/product.css";
@@ -123,10 +117,6 @@ function Product() {
   }
 
   return (
-
-    <>
-
-      <Navbar />
 
       <section className="productpage">
 
@@ -422,9 +412,6 @@ function Product() {
 
       </section>
 
-      <Footer />
-
-    </>
   );
 }
 

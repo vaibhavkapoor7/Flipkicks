@@ -12,8 +12,6 @@ import {
   ArrowLeft,
 } from "lucide-react";
 
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
 import { useCart } from "../context/CartContext";
 
 import "../pages-css/Cart.css";
@@ -31,28 +29,22 @@ function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <>
-        <Navbar />
-        <section className="cart-page">
-          <div className="cart-empty">
-            <div className="cart-empty-icon">
-              <ShoppingBag size={52} />
-            </div>
-            <h2>Your Cart Is Empty</h2>
-            <p>Looks like you haven't added any sneakers yet. Start browsing to find your next pair.</p>
-            <button className="cart-browse-btn" onClick={() => navigate("/browse")}>
-              Browse Sneakers <ChevronRight size={18} />
-            </button>
+      <section className="cart-page">
+        <div className="cart-empty">
+          <div className="cart-empty-icon">
+            <ShoppingBag size={52} />
           </div>
-        </section>
-        <Footer />
-      </>
+          <h2>Your Cart Is Empty</h2>
+          <p>Looks like you haven't added any sneakers yet. Start browsing to find your next pair.</p>
+          <button className="cart-browse-btn" onClick={() => navigate("/browse")}>
+            Browse Sneakers <ChevronRight size={18} />
+          </button>
+        </div>
+      </section>
     );
   }
 
   return (
-    <>
-      <Navbar />
 
       <section className="cart-page">
 
@@ -177,8 +169,6 @@ function Cart() {
 
       </section>
 
-      <Footer />
-    </>
   );
 }
 

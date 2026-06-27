@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
+
 import Home from './pages/Home'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
@@ -13,49 +16,24 @@ function App() {
 
     return (
 
-        <Routes>
+        <>
+            <Navbar />
 
-            <Route
-                path="/"
-                element={<Home />}
-            />
+            <Routes>
 
-            <Route
-                path="/browse"
-                element={<Browse />}
-            />
+                <Route path="/"           element={<Home />}      />
+                <Route path="/browse"     element={<Browse />}    />
+                <Route path="/product/:id"element={<Product />}   />
+                <Route path="/cart"       element={<Cart />}      />
+                <Route path="/about"      element={<About />}     />
+                <Route path="/HowItWorks" element={<HowItWorks />}/>
+                <Route path="/sell"       element={<Sell />}      />
+                <Route path="/account"    element={<Account />}   />
 
-            <Route
-                path="/product/:id"
-                element={<Product />}
-            />
+            </Routes>
 
-            <Route
-                path="/cart"
-                element={<Cart />}
-            />
-
-            <Route
-                path="/about"
-                element={<About />}
-            />
-
-            <Route
-                path="/HowItWorks"
-                element={<HowItWorks />}
-            />
-
-            <Route
-                path="/sell"
-                element={<Sell />}
-            />
-
-            <Route
-                path="/account"
-                element={<Account />}
-            />
-
-        </Routes>
+            <Footer />
+        </>
 
     )
 

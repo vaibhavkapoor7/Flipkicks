@@ -1,12 +1,6 @@
 import { useEffect, useState }
 from "react";
 
-import Navbar from
-"../components/navbar/Navbar";
-
-import Footer from
-"../components/footer/Footer";
-
 import BrowseLayout from
 "../components/browse/BrowseLayout/BrowseLayout";
 
@@ -167,10 +161,6 @@ function Browse() {
 
   return (
 
-    <>
-
-      <Navbar />
-
       <BrowseLayout
 
         /* products */
@@ -245,9 +235,6 @@ function Browse() {
 
       />
 
-      <Footer />
-
-    </>
   );
 }
 

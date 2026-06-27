@@ -10,9 +10,6 @@ import {
   Zap,
 } from "lucide-react";
 
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
-
 import "../pages-css/About.css";
 
 const stats = [
@@ -77,9 +74,6 @@ function About() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <Navbar />
-
       <section className="about-page">
 
         {/* ── Hero ── */}
@@ -211,8 +205,6 @@ function About() {
 
       </section>
 
-      <Footer />
-    </>
   );
 }
 
