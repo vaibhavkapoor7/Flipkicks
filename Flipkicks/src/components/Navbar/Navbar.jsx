@@ -16,12 +16,16 @@ import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.png";
 
+import { useCart } from "../../context/CartContext";
+
 import "./Navbar.css";
 
 function Navbar() {
 
   const navigate =
   useNavigate();
+
+  const { totalItems } = useCart();
 
   const [searchValue,
   setSearchValue] =
@@ -237,16 +241,18 @@ function Navbar() {
                 <div className="nav-icons">
       <Bell />
 
-      <ShoppingCart
-        className="cart-icon"
-        onClick={() => setIsCartOpen(true)}
-      />
+      <button className="cart-icon-wrap" onClick={() => navigate("/cart")}>
+        <ShoppingCart size={24} />
+        {totalItems > 0 && (
+          <span className="cart-badge">{totalItems}</span>
+        )}
+      </button>
     </div>
 
 
             {/* profile */}
 
-            <div className="profile">
+            <div className="profile" onClick={() => navigate("/account")}>
 
               <img
                 src={profile}

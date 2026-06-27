@@ -6,6 +6,8 @@ import Cart from './pages/Cart'
 import About from './pages/About'
 import Browse from './pages/Browse'
 import HowItWorks from './pages/HowItWorks'
+import Sell from './pages/Sell'
+import Account from './pages/Account'
 
 function App() {
 
@@ -41,6 +43,16 @@ function App() {
             <Route
                 path="/HowItWorks"
                 element={<HowItWorks />}
+            />
+
+            <Route
+                path="/sell"
+                element={<Sell />}
+            />
+
+            <Route
+                path="/account"
+                element={<Account />}
             />
 
         </Routes>

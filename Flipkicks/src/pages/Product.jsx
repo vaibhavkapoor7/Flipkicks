@@ -1,7 +1,7 @@
 import { useEffect, useState }
 from "react";
 
-import { useParams }
+import { useParams, useNavigate }
 from "react-router-dom";
 
 import {
@@ -9,7 +9,9 @@ import {
   Star,
   ShieldCheck,
   Truck,
-  RotateCcw
+  RotateCcw,
+  ShoppingCart,
+  CheckCircle,
 } from "lucide-react";
 
 import Navbar from
@@ -18,12 +20,17 @@ import Navbar from
 import Footer from
 "../components/footer/Footer";
 
+import { useCart } from "../context/CartContext";
+
 import "../pages-css/product.css";
 
 function Product() {
 
   const { id } =
   useParams();
+
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const [product, setProduct] =
   useState(null);
@@ -35,6 +42,8 @@ function Product() {
   const [selectedSize,
   setSelectedSize] =
   useState("8");
+
+  const [added, setAdded] = useState(false);
 
   /* sizes */
 
@@ -383,16 +392,28 @@ function Product() {
 
           <div className="product-actions">
 
-            <button className="buy-btn">
-
+            <button
+              className="buy-btn"
+              onClick={() => {
+                addToCart(product, selectedSize);
+                navigate("/cart");
+              }}
+            >
               Buy Now
-
             </button>
 
-            <button className="cart-btn">
-
-              Add To Cart
-
+            <button
+              className={`cart-btn ${added ? "cart-btn-added" : ""}`}
+              onClick={() => {
+                addToCart(product, selectedSize);
+                setAdded(true);
+                setTimeout(() => setAdded(false), 2000);
+              }}
+            >
+              {added
+                ? <><CheckCircle size={17} /> Added to Cart</>
+                : <><ShoppingCart size={17} /> Add To Cart</>
+              }
             </button>
 
           </div>
