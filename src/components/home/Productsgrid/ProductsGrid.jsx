@@ -2,7 +2,7 @@ import { useEffect, useState }
 from "react";
 
 import ProductCard
-from "../ProductCard/ProductCard";
+from "../Productcard/ProductCard";
 
 import "./ProductsGrid.css";
 
