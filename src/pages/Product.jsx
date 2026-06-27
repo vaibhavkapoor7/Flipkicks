@@ -16,7 +16,7 @@ import {
 
 import { useCart } from "../context/CartContext";
 
-import "../pages-css/product.css";
+import "../pages-css/Product.css";
 
 function Product() {
 

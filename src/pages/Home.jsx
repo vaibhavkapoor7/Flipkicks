@@ -10,7 +10,7 @@ import HowItWorks from '../components/home/HowItWorks/HowItWorks'
 import Testimonials from '../components/home/Testimonials/Testimonials'
 import Community from '../components/home/Community/Community'
 
-import '../pages-css/home.css'
+import '../pages-css/Home.css'
 
 function Home() {
 

@@ -1,8 +1,7 @@
 import { useEffect, useState }
 from "react";
 
-import BrowseLayout from
-"../components/browse/BrowseLayout/BrowseLayout";
+import BrowseLayout from '../components/Browse/BrowseLayout/BrowseLayout'
 
 import { fetchProducts }
 from "../api/productsApi";
