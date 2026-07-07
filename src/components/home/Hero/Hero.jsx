@@ -1,10 +1,13 @@
 import { MoveRight, ShieldCheck, Truck, BadgeCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import sneaker from "../../../assets/images/heroimage.png";
 
 import "./Hero.css";
 
 function Hero() {
+
+  const navigate = useNavigate();
 
   return (
 
@@ -35,7 +38,7 @@ function Hero() {
 
           <div className="hero-buttons">
 
-            <button className="primary-btn">
+            <button className="primary-btn" onClick={() => navigate("/browse")}>
 
               Browse Sneakers
 
@@ -43,7 +46,7 @@ function Hero() {
 
             </button>
 
-            <button className="secondary-btn">
+            <button className="secondary-btn" onClick={() => navigate("/sell")}>
 
               Sell Yours
 
