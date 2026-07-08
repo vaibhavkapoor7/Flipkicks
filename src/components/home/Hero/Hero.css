@@ -167,7 +167,7 @@
     display: block;
     animation: float 4s ease-in-out infinite;
     position: relative;
-    z-index: 1;
+    z-index: -100;
 
     /* fade to transparent from all edges */
     -webkit-mask-image: radial-gradient(
