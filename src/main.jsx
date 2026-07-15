@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from './App'
 import { CartProvider } from './context/CartContext'
+import { CurrencyProvider } from './context/CurrencyContext'
 
 import './index.css'
 
@@ -11,9 +12,11 @@ ReactDOM.createRoot(
 ).render(
 
     <BrowserRouter>
-        <CartProvider>
-            <App />
-        </CartProvider>
+        <CurrencyProvider>
+            <CartProvider>
+                <App />
+            </CartProvider>
+        </CurrencyProvider>
     </BrowserRouter>
 
 )

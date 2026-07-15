@@ -4,6 +4,8 @@ from "lucide-react";
 import { Link }
 from "react-router-dom";
 
+import { useCurrency } from "../../../context/CurrencyContext";
+
 import "./ProductCard.css";
 
 function ProductCard({
@@ -23,6 +25,8 @@ function ProductCard({
   variant = "home"
 
 }) {
+
+  const { format } = useCurrency();
 
   return (
 
@@ -111,7 +115,7 @@ function ProductCard({
 
           <h2>
 
-            ${price}
+            {format(price)}
 
           </h2>
 

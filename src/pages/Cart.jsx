@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import { useCart } from "../context/CartContext";
+import { useCurrency } from "../context/CurrencyContext";
 
 import "../pages-css/Cart.css";
 
@@ -22,6 +23,7 @@ const TAX_RATE = 0.08;
 function Cart() {
   const navigate = useNavigate();
   const { cartItems, removeFromCart, updateQuantity, subtotal, totalItems, clearCart } = useCart();
+  const { format } = useCurrency();
 
   const shipping  = cartItems.length > 0 ? SHIPPING : 0;
   const tax       = subtotal * TAX_RATE;
@@ -93,8 +95,8 @@ function Cart() {
                 </div>
 
                 <div className="cart-item-price">
-                  <strong>${(item.price * item.quantity).toFixed(2)}</strong>
-                  <span className="cart-item-unit">${item.price.toFixed(2)} each</span>
+                  <strong>{format(item.price * item.quantity, { decimals: 2 })}</strong>
+                  <span className="cart-item-unit">{format(item.price, { decimals: 2 })} each</span>
                 </div>
 
                 <button
@@ -137,21 +139,21 @@ function Cart() {
             <div className="cart-summary-rows">
               <div className="summary-row">
                 <span>Subtotal ({totalItems} {totalItems === 1 ? "item" : "items"})</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{format(subtotal, { decimals: 2 })}</span>
               </div>
               <div className="summary-row">
                 <span>Shipping</span>
-                <span>${shipping.toFixed(2)}</span>
+                <span>{format(shipping, { decimals: 2 })}</span>
               </div>
               <div className="summary-row">
                 <span>Tax (8%)</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>{format(tax, { decimals: 2 })}</span>
               </div>
             </div>
 
             <div className="summary-total">
               <span>Total</span>
-              <strong>${total.toFixed(2)}</strong>
+              <strong>{format(total, { decimals: 2 })}</strong>
             </div>
 
             <button className="cart-checkout-btn">

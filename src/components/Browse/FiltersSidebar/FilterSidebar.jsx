@@ -3,6 +3,8 @@ import {
   ChevronDown
 } from "lucide-react";
 
+import { useCurrency } from "../../../context/CurrencyContext";
+
 import "./FiltersSidebar.css";
 
 function FiltersSidebar({
@@ -26,6 +28,8 @@ function FiltersSidebar({
   setCondition
 
 }) {
+
+  const { format } = useCurrency();
 
   /* categories */
 
@@ -310,7 +314,7 @@ function FiltersSidebar({
         <div className="price-boxes">
 
           <div className="price-box">
-            $50
+            {format(50)}
           </div>
 
           <span>
@@ -318,7 +322,7 @@ function FiltersSidebar({
           </span>
 
           <div className="price-box">
-            ${price}
+            {format(price)}
           </div>
 
         </div>

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { useCart } from "../context/CartContext";
+import { useCurrency } from "../context/CurrencyContext";
 
 import "../pages-css/Product.css";
 
@@ -25,6 +26,7 @@ function Product() {
 
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { format } = useCurrency();
 
   const [product, setProduct] =
   useState(null);
@@ -320,7 +322,7 @@ function Product() {
 
           <div className="product-price">
 
-            ${product.price}
+            {format(product.price)}
 
           </div>
 

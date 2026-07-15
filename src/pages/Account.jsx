@@ -21,6 +21,8 @@ import {
   DollarSign,
 } from "lucide-react";
 
+import { useCurrency } from "../context/CurrencyContext";
+
 import "../pages-css/Account.css";
 
 const avatar = "https://api.dicebear.com/9.x/adventurer/svg?seed=VaibhavKapoor&backgroundColor=dbeafe&skinColor=f2d3b1&hair=short01&hairColor=2c1503&eyes=variant07&mouth=variant26";
@@ -127,6 +129,8 @@ function ProfileTab() {
 }
 
 function ListingsTab() {
+  const { format } = useCurrency();
+
   return (
     <div className="acc-panel">
       <div className="acc-panel-header">
@@ -150,7 +154,7 @@ function ListingsTab() {
                   <span>{item.condition}</span>
                 </div>
                 <div className="acc-listing-footer">
-                  <strong>£{item.price}</strong>
+                  <strong>{format(item.price)}</strong>
                   <button className="acc-view-btn">Manage <ChevronRight size={14} /></button>
                 </div>
               </div>
@@ -163,6 +167,8 @@ function ListingsTab() {
 }
 
 function OrdersTab() {
+  const { format } = useCurrency();
+
   return (
     <div className="acc-panel">
       <div className="acc-panel-header">
@@ -189,7 +195,7 @@ function OrdersTab() {
                 </div>
               </div>
               <div className="acc-order-right">
-                <strong>£{order.price}</strong>
+                <strong>{format(order.price)}</strong>
                 <span className={`acc-status-badge ${s.className}`}>{s.icon}{s.label}</span>
               </div>
             </div>
@@ -253,10 +259,11 @@ function SettingsTab() {
 
 function Account() {
   const [activeTab, setActiveTab] = useState("profile");
+  const { format } = useCurrency();
 
   const stats = [
     { icon: <Package size={20} />,    label: "Listings",    value: "4"     },
-    { icon: <DollarSign size={20} />, label: "Total Sold",  value: "£890"  },
+    { icon: <DollarSign size={20} />, label: "Total Sold",  value: format(890) },
     { icon: <ShoppingBag size={20}/>, label: "Purchased",   value: "4"     },
     { icon: <Star size={20} />,       label: "Rating",      value: "4.9"   },
   ];

@@ -12,6 +12,8 @@ import {
   Upload,
 } from "lucide-react";
 
+import { useCurrency } from "../context/CurrencyContext";
+
 import "../pages-css/Sell.css";
 
 const steps = [
@@ -65,6 +67,7 @@ const sizes = [
 
 function Sell() {
   const navigate = useNavigate();
+  const { currency } = useCurrency();
 
   const [form, setForm] = useState({
     sneakerName: "",
@@ -221,7 +224,7 @@ function Sell() {
 
                 <div className="sell-form-row">
                   <div className="sell-field">
-                    <label>Asking Price (£)</label>
+                    <label>Asking Price ({currency.symbol})</label>
                     <input
                       type="number"
                       name="price"

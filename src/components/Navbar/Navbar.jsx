@@ -13,14 +13,22 @@ import {
   X,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import logo from "../../assets/images/logo.png";
 import profile from "../../assets/images/profile.png";
 
 import { useCart } from "../../context/CartContext";
+import { useCurrency, currencies } from "../../context/CurrencyContext";
 
 import "./Navbar.css";
+
+const initialNotifications = [
+  { id: 1, title: "Order Shipped", message: "Your Air Jordan 1 Retro High OG is on its way.", time: "2h ago", read: false },
+  { id: 2, title: "Price Drop", message: "A pair on your watchlist just dropped in price.", time: "5h ago", read: false },
+  { id: 3, title: "New Message", message: "You have a new message from a buyer.", time: "1d ago", read: false },
+  { id: 4, title: "Order Delivered", message: "Your Samba OG White Black was delivered.", time: "3d ago", read: true },
+];
 
 function Navbar() {
 
@@ -31,6 +39,71 @@ function Navbar() {
   const [searchValue, setSearchValue] = useState("");
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const [notifOpen, setNotifOpen] = useState(false);
+
+  const [notifications, setNotifications] = useState(initialNotifications);
+
+  const notifRef = useRef(null);
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
+
+  const [currencyOpen, setCurrencyOpen] = useState(false);
+
+  const { currency, setCurrency } = useCurrency();
+
+  const currencyRef = useRef(null);
+
+  /* close notifications dropdown on outside click */
+
+  useEffect(() => {
+
+    function handleClickOutside(e) {
+      if (notifRef.current && !notifRef.current.contains(e.target)) {
+        setNotifOpen(false);
+      }
+    }
+
+    if (notifOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [notifOpen]);
+
+  /* close currency dropdown on outside click */
+
+  useEffect(() => {
+
+    function handleClickOutside(e) {
+      if (currencyRef.current && !currencyRef.current.contains(e.target)) {
+        setCurrencyOpen(false);
+      }
+    }
+
+    if (currencyOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [currencyOpen]);
+
+  function handleNotifToggle() {
+    setNotifOpen((prev) => !prev);
+  }
+
+  function markAllRead() {
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+  }
+
+  function handleCurrencyToggle() {
+    setCurrencyOpen((prev) => !prev);
+  }
+
+  function handleCurrencySelect(c) {
+    setCurrency(c);
+    setCurrencyOpen(false);
+  }
 
   /* search */
 
@@ -66,9 +139,34 @@ function Navbar() {
 
             <span>Help</span>
 
-            <div className="currency">
-              USD
-              <ChevronDown size={15} />
+            <div className="currency-wrap" ref={currencyRef}>
+
+              <button
+                className="currency"
+                onClick={handleCurrencyToggle}
+                aria-expanded={currencyOpen}
+                aria-label="Select currency"
+              >
+                {currency.code}
+                <ChevronDown size={15} className={currencyOpen ? "currency-chevron-open" : ""} />
+              </button>
+
+              {currencyOpen && (
+                <div className="currency-dropdown">
+                  {currencies.map((c) => (
+                    <button
+                      key={c.code}
+                      className={`currency-option ${c.code === currency.code ? "currency-option-active" : ""}`}
+                      onClick={() => handleCurrencySelect(c)}
+                    >
+                      <span className="currency-option-symbol">{c.symbol}</span>
+                      <span className="currency-option-code">{c.code}</span>
+                      <span className="currency-option-label">{c.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+
             </div>
 
           </div>
@@ -150,7 +248,56 @@ function Navbar() {
 
             <div className="nav-icons">
 
-              <Bell />
+              <div className="notif-wrap" ref={notifRef}>
+
+                <button
+                  className="notif-icon-wrap"
+                  onClick={handleNotifToggle}
+                  aria-label="Notifications"
+                  aria-expanded={notifOpen}
+                >
+                  <Bell />
+                  {unreadCount > 0 && (
+                    <span className="notif-badge">{unreadCount}</span>
+                  )}
+                </button>
+
+                {notifOpen && (
+                  <div className="notif-dropdown">
+
+                    <div className="notif-dropdown-header">
+                      <h4>Notifications</h4>
+                      {unreadCount > 0 && (
+                        <button className="notif-mark-read" onClick={markAllRead}>
+                          Mark all read
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="notif-dropdown-list">
+                      {notifications.length === 0 ? (
+                        <div className="notif-empty">You're all caught up.</div>
+                      ) : (
+                        notifications.map((n) => (
+                          <div
+                            key={n.id}
+                            className={`notif-item ${n.read ? "" : "notif-item-unread"}`}
+                          >
+                            <span className="notif-dot" />
+                            <div className="notif-item-text">
+                              <p className="notif-item-title">{n.title}</p>
+                              <p className="notif-item-message">{n.message}</p>
+                              <span className="notif-item-time">{n.time}</span>
+                            </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                  </div>
+                )}
+
+              </div>
 
               <button className="cart-icon-wrap" onClick={() => navigate("/cart")}>
                 <ShoppingCart size={24} />
