@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { CartProvider } from './context/CartContext'
 import { CurrencyProvider } from './context/CurrencyContext'
+import { WishlistProvider } from './context/WishlistContext'
 
 import './index.css'
 
@@ -14,7 +15,9 @@ ReactDOM.createRoot(
     <BrowserRouter>
         <CurrencyProvider>
             <CartProvider>
-                <App />
+                <WishlistProvider>
+                    <App />
+                </WishlistProvider>
             </CartProvider>
         </CurrencyProvider>
     </BrowserRouter>

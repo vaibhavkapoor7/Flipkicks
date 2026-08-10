@@ -5,6 +5,7 @@ import { Link }
 from "react-router-dom";
 
 import { useCurrency } from "../../../context/CurrencyContext";
+import { useWishlist } from "../../../context/WishlistContext";
 
 import "./ProductCard.css";
 
@@ -27,6 +28,9 @@ function ProductCard({
 }) {
 
   const { format } = useCurrency();
+  const { isWishlisted, toggleWishlist } = useWishlist();
+
+  const wishlisted = isWishlisted(id);
 
   return (
 
@@ -44,17 +48,21 @@ function ProductCard({
 
         <button
 
-          className="card-wishlist"
+          className={`card-wishlist ${wishlisted ? "card-wishlist-active" : ""}`}
+
+          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
 
           onClick={(e) => {
 
             e.preventDefault();
 
+            toggleWishlist(id);
+
           }}
 
         >
 
-          <Heart size={18} />
+          <Heart size={18} fill={wishlisted ? "currentColor" : "none"} />
 
         </button>
 

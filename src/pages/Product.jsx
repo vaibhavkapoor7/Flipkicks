@@ -16,6 +16,7 @@ import {
 
 import { useCart } from "../context/CartContext";
 import { useCurrency } from "../context/CurrencyContext";
+import { useWishlist } from "../context/WishlistContext";
 
 import "../pages-css/Product.css";
 
@@ -27,6 +28,7 @@ function Product() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { format } = useCurrency();
+  const { isWishlisted, toggleWishlist } = useWishlist();
 
   const [product, setProduct] =
   useState(null);
@@ -163,9 +165,13 @@ function Product() {
 
           <div className="product-main-image">
 
-            <button className="wishlist-btn">
+            <button
+              className={`wishlist-btn ${isWishlisted(product.id) ? "wishlist-btn-active" : ""}`}
+              aria-label={isWishlisted(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+              onClick={() => toggleWishlist(product.id)}
+            >
 
-              <Heart size={20} />
+              <Heart size={20} fill={isWishlisted(product.id) ? "currentColor" : "none"} />
 
             </button>
 

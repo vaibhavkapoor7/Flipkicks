@@ -137,6 +137,16 @@
     background: #2563eb;
 }
 
+.card-wishlist-active{
+    background: #ef4444;
+    border-color: #ef4444;
+    color: white;
+}
+
+.card-wishlist-active:hover{
+    background: #dc2626;
+}
+
 /* =========================
    CONTENT
 ========================= */

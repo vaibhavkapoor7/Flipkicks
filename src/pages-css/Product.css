@@ -219,6 +219,15 @@
     background: #2563eb;
 }
 
+.wishlist-btn-active{
+    background: #ef4444;
+    color: white;
+}
+
+.wishlist-btn-active:hover{
+    background: #dc2626;
+}
+
 /* =========================
    DOTS
 ========================= */
