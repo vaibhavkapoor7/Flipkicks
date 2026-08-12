@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ShoppingBag,
@@ -10,6 +11,9 @@ import {
   Truck,
   RotateCcw,
   ArrowLeft,
+  AlertTriangle,
+  CheckCircle2,
+  X,
 } from "lucide-react";
 
 import { useCart } from "../context/CartContext";
@@ -25,9 +29,46 @@ function Cart() {
   const { cartItems, removeFromCart, updateQuantity, subtotal, totalItems, clearCart } = useCart();
   const { format } = useCurrency();
 
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [orderComplete, setOrderComplete] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+
   const shipping  = cartItems.length > 0 ? SHIPPING : 0;
   const tax       = subtotal * TAX_RATE;
   const total     = subtotal + shipping + tax;
+
+  function handleConfirmPurchase() {
+    setOrderNumber(`FK-${Math.floor(100000 + Math.random() * 900000)}`);
+    clearCart();
+    setShowConfirm(false);
+    setOrderComplete(true);
+  }
+
+  if (orderComplete) {
+    return (
+      <section className="cart-page">
+        <div className="order-success">
+          <div className="order-success-icon">
+            <CheckCircle2 size={48} />
+          </div>
+          <h2>Thank You For Your Purchase!</h2>
+          <p>
+            Your order <strong>#{orderNumber}</strong> has been placed. We've sent a
+            confirmation to your email, and your authenticated sneakers will be on
+            their way soon.
+          </p>
+          <div className="order-success-actions">
+            <button className="cart-browse-btn" onClick={() => navigate("/browse")}>
+              Continue Shopping <ChevronRight size={18} />
+            </button>
+            <button className="order-success-secondary" onClick={() => navigate("/account")}>
+              View My Orders
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (cartItems.length === 0) {
     return (
@@ -156,7 +197,7 @@ function Cart() {
               <strong>{format(total, { decimals: 2 })}</strong>
             </div>
 
-            <button className="cart-checkout-btn">
+            <button className="cart-checkout-btn" onClick={() => setShowConfirm(true)}>
               Proceed to Checkout <ChevronRight size={18} />
             </button>
 
@@ -168,6 +209,41 @@ function Cart() {
           </div>
 
         </div>
+
+        {showConfirm && (
+          <div className="confirm-overlay" onClick={() => setShowConfirm(false)}>
+            <div className="confirm-modal" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="confirm-close"
+                onClick={() => setShowConfirm(false)}
+                aria-label="Close"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="confirm-icon">
+                <AlertTriangle size={26} />
+              </div>
+
+              <h2>Confirm Your Order</h2>
+              <p>
+                Are you sure you want to place this order for{" "}
+                <strong>{totalItems} {totalItems === 1 ? "item" : "items"}</strong>{" "}
+                totalling <strong>{format(total, { decimals: 2 })}</strong>? This
+                action can't be undone.
+              </p>
+
+              <div className="confirm-actions">
+                <button className="confirm-cancel" onClick={() => setShowConfirm(false)}>
+                  Cancel
+                </button>
+                <button className="confirm-proceed" onClick={handleConfirmPurchase}>
+                  Yes, Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </section>
 
