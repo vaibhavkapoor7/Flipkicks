@@ -18,6 +18,8 @@ import { useCart } from "../context/CartContext";
 import { useCurrency } from "../context/CurrencyContext";
 import { useWishlist } from "../context/WishlistContext";
 
+import ProductCard from "../components/home/Productcard/ProductCard";
+
 import "../pages-css/Product.css";
 
 function Product() {
@@ -42,6 +44,8 @@ function Product() {
   useState("8");
 
   const [added, setAdded] = useState(false);
+
+  const [recommendations, setRecommendations] = useState([]);
 
   /* sizes */
 
@@ -86,6 +90,31 @@ function Product() {
 
   }, [id]);
 
+  /* recommendations */
+
+  useEffect(() => {
+
+    if (!product) return;
+
+    async function fetchRecommendations() {
+
+      const response = await fetch(
+        `https://dummyjson.com/products/category/${product.category}?limit=9`
+      );
+
+      const data = await response.json();
+
+      const related = (data.products || [])
+        .filter((item) => item.id !== product.id)
+        .slice(0, 4);
+
+      setRecommendations(related);
+    }
+
+    fetchRecommendations();
+
+  }, [product]);
+
   /* auto carousel */
 
   useEffect(() => {
@@ -121,6 +150,8 @@ function Product() {
   }
 
   return (
+
+    <>
 
       <section className="productpage">
 
@@ -419,6 +450,41 @@ function Product() {
         </div>
 
       </section>
+
+      {/* RECOMMENDATIONS */}
+
+      {recommendations.length > 0 && (
+
+        <section className="recommended-section">
+
+          <div className="recommended-header">
+            <h2>You Might Also Like</h2>
+          </div>
+
+          <div className="recommended-grid">
+
+            {recommendations.map((item) => (
+
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                image={item.thumbnail}
+                title={item.title}
+                brand={item.brand}
+                price={item.price}
+                rating={item.rating}
+                variant="home"
+              />
+
+            ))}
+
+          </div>
+
+        </section>
+
+      )}
+
+    </>
 
   );
 }

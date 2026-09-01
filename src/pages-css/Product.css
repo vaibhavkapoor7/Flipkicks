@@ -11,7 +11,7 @@
 
     overflow: hidden;
     display: flex;
-    direction: row;
+    flex-direction: row;
     gap: 40px;
     
 }
@@ -569,10 +569,44 @@
 }
 
 /* =========================
+   RECOMMENDATIONS
+========================= */
+
+.recommended-section{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 50px 80px;
+}
+
+.recommended-header{
+    margin-bottom: 28px;
+}
+
+.recommended-header h2{
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.recommended-grid{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 
 @media(max-width: 1200px){
+
+    .productpage{
+        flex-direction: column;
+    }
+
+    .product-left{
+        max-width: 100%;
+    }
 
     .product-top{
         grid-template-columns: 1fr;
@@ -580,6 +614,10 @@
 
     .product-right h1{
         font-size: 42px;
+    }
+
+    .recommended-grid{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -589,12 +627,31 @@
         padding: 30px 20px;
     }
 
+    .recommended-section{
+        padding: 10px 20px 60px;
+    }
+
+    .recommended-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
     .product-left{
+        flex-direction: column;
+    }
+
+    .product-image-section{
         flex-direction: column;
     }
 
     .product-thumbnails{
         flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .product-thumbnails button{
+        flex-shrink: 0;
     }
 
     .product-main-image{
@@ -616,5 +673,33 @@
 
     .product-right h1{
         font-size: 36px;
+    }
+}
+
+@media(max-width: 480px){
+
+    .product-thumbnails button{
+        width: 64px;
+        height: 64px;
+    }
+
+    .product-main-image{
+        height: 340px;
+    }
+
+    .product-main-image img{
+        max-height: 220px;
+    }
+
+    .product-right h1{
+        font-size: 28px;
+    }
+
+    .product-price{
+        font-size: 32px;
+    }
+
+    .recommended-grid{
+        grid-template-columns: minmax(0, 1fr);
     }
 }
